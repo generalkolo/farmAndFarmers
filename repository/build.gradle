@@ -1,0 +1,25 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+
+    api(
+            NetworkDependencies.loggingInterceptor,
+            NetworkDependencies.moshi,
+            project(':domain')
+    )
+
+    implementation(
+            fileTree(dir: 'libs', include: ['*.jar']),
+            CoreDependencies.kotlin,
+            CoreDependencies.coroutines,
+            DependencyInjectionDependencies.dagger,
+            NetworkDependencies.retrofit,
+    )
+
+    kapt(DependencyInjectionDependencies.daggerCompiler)
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
