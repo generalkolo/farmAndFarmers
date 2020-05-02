@@ -1,22 +1,23 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: "androidx.navigation.safeargs"
-
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
+}
 
 android {
     compileSdkVersion Versions.compileSdkVersion
-    buildToolsVersion Versions.buildToolsVersion
 
     defaultConfig {
-        applicationId CoreDependencies.packageName
         minSdkVersion Versions.minSdkVersion
         targetSdkVersion Versions.targetSdkVersion
+
         versionCode Versions.versionCode
         versionName Versions.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -37,6 +38,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -62,11 +64,9 @@ dependencies {
 
             DependencyInjectionDependencies.dagger,
             DependencyInjectionDependencies.daggerAndroid,
-
-            //Local Libs
-            project(':local'),
-            project(':auth')
     )
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     androidTestImplementation(
             AndroidTestDependencies.textExt,

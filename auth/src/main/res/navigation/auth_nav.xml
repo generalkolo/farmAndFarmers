@@ -2,12 +2,13 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/auth_navigtaion_graph"
-    app:startDestination="@id/login_fragment">
+    android:id="@+id/auth_nav"
+    app:startDestination="@id/loginFragment">
 
     <fragment
-        android:id="@+id/login_fragment"
-        android:name="com.example.cleanWithCoRoutine.presentation.fragments.LoginFragment"
-        android:label="Login"
+        android:id="@+id/loginFragment"
+        android:name="com.example.cleanWithCoRoutine.auth.presentation.fragments.LoginFragment"
+        android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+
 </navigation>

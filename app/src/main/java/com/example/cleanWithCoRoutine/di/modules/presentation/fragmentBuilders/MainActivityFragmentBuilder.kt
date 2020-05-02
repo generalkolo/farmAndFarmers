@@ -1,15 +1,13 @@
 package com.example.cleanWithCoRoutine.di.modules.presentation.fragmentBuilders
 
-import com.example.cleanWithCoRoutine.di.FragmentScope
-import com.example.cleanWithCoRoutine.presentation.dashboard.DashboardFragment
+//import com.example.cleanWithCoRoutine.presentation.dashboard.DashboardFragment
 import dagger.Module
-import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class MainActivityFragmentBuilder {
 
-    @FragmentScope
-    @ContributesAndroidInjector()
-    abstract fun provideDashboardFragment(): DashboardFragment
+//    @FragmentScope
+//    @ContributesAndroidInjector()
+//    abstract fun provideDashboardFragment(): DashboardFragment
 
 }
