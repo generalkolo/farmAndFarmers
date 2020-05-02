@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.cleanWithCoRoutine.di.ViewModelKey
 import com.example.cleanWithCoRoutine.di.factory.ViewModelFactory
-import com.example.cleanWithCoRoutine.ui.dashboard.DashboardViewModel
+import com.example.cleanWithCoRoutine.presentation.dashboard.DashboardViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

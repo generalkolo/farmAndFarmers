@@ -1,4 +1,4 @@
-package com.example.cleanWithCoRoutine.ui.home
+package com.example.cleanWithCoRoutine.presentation.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

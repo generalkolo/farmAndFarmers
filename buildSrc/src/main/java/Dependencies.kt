@@ -13,19 +13,18 @@ object Versions {
     const val junit = "4.12"
     const val espresso = "3.2.0"
     const val appCompat = "1.1.0"
+    const val legacySupport = "1.0.0"
 
     const val coroutines = "1.3.5"
     const val room = "2.2.5"
-    const val okhttp = "4.2.1"
-    const val moshi = "2.8.1"
-    const val retrofit = "2.8.1"
     const val materialComponent = "1.1.0"
     const val dagger = "2.27"
     const val navigation = "2.2.2"
-    const val constraintLayout = "2.0.0-beta1"
+    const val constraintLayout = "2.0.0-beta4"
     const val gson = "2.8.5"
-    const val gradle = "3.5.0"
+    const val gradle = "3.6.0"
     const val testExt = "1.1.1"
+    const val materialStepper = "4.3.1"
 }
 
 object ClassPaths {
@@ -50,6 +49,8 @@ object CoreDependencies {
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val coroutines =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+    const val legacySupport = "androidx.legacy:legacy-support-v4:${Versions.legacySupport}"
+    const val kotlinStd =  "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlinVersion}"
 }
 
 object TestDependencies {
@@ -64,13 +65,7 @@ object AndroidTestDependencies {
 object ViewDependencies {
     const val materialComponent =
         "com.google.android.material:material:${Versions.materialComponent}"
-}
-
-object NetworkDependencies {
-    const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
-    const val moshi = "com.squareup.retrofit2:converter-moshi:${Versions.moshi}"
-    const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
-    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val materialStepper = "com.stepstone.stepper:material-stepper:${Versions.materialStepper}"
 }
 
 object DependencyInjectionDependencies {

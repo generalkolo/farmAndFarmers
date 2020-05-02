@@ -1,4 +1,4 @@
-package com.example.cleanWithCoRoutine.ui.home
+package com.example.cleanWithCoRoutine.presentation.home
 
 import android.os.Bundle
 import android.view.LayoutInflater

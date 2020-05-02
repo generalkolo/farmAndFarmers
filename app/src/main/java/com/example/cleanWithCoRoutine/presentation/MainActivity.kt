@@ -1,12 +1,8 @@
-package com.example.cleanWithCoRoutine.ui
+package com.example.cleanWithCoRoutine.presentation
 
 import android.os.Bundle
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import android.util.Log
 import com.example.cleanWithCoRoutine.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.android.support.DaggerAppCompatActivity
 
 class MainActivity : DaggerAppCompatActivity() {

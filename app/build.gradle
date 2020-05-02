@@ -25,6 +25,10 @@ android {
         }
     }
 
+    viewBinding {
+        enabled = true
+    }
+
     // To inline the bytecode built with JVM target 1.8 into
     // bytecode that is being built with JVM target 1.6. (e.g. navArgs)
 
@@ -45,11 +49,15 @@ dependencies {
             CoreDependencies.coreKtx,
             CoreDependencies.constraintLayout,
             CoreDependencies.lifecycle,
-            ViewDependencies.materialComponent,
             CoreDependencies.navigationFragment,
             CoreDependencies.navigationUi,
             CoreDependencies.navigationFragmentKtx,
             CoreDependencies.navigationUiKtx,
+            CoreDependencies.legacySupport,
+            CoreDependencies.kotlinStd,
+
+            ViewDependencies.materialComponent,
+            ViewDependencies.materialStepper,
 
             DependencyInjectionDependencies.dagger,
             DependencyInjectionDependencies.daggerAndroid,

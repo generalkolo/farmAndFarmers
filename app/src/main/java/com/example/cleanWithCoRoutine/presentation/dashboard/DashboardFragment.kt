@@ -1,4 +1,4 @@
-package com.example.cleanWithCoRoutine.ui.dashboard
+package com.example.cleanWithCoRoutine.presentation.dashboard
 
 import android.os.Bundle
 import android.view.LayoutInflater
