@@ -1,3 +1,2 @@
-include ':statistics'
 rootProject.name = 'Clean with Co-Routine'
-include ':app', ':repository', ':auth', ':domain', ':local'
+include ':app', ':repository', ':auth', ':domain', ':local', ':statistics'

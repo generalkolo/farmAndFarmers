@@ -1,0 +1,13 @@
+<resources>
+
+    <style name="Theme.null" parent="Theme.MaterialComponents.Light" />
+
+    <style name="Theme.null.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.null.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.null.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

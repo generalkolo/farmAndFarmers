@@ -19,7 +19,7 @@ object Versions {
     const val room = "2.2.5"
     const val materialComponent = "1.1.0"
     const val dagger = "2.27"
-    const val navigation = "2.2.2"
+    const val navigation = "2.3.0-alpha06"
     const val constraintLayout = "2.0.0-beta4"
     const val gson = "2.8.5"
     const val gradle = "3.6.0"

@@ -5,10 +5,22 @@
     android:id="@+id/auth_nav"
     app:startDestination="@id/loginFragment">
 
+    <include app:graph="@navigation/stats_graph" />
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.cleanWithCoRoutine.auth.presentation.fragments.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/navigateToStatistics"
+            app:destination="@id/statistic_nav_graph"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+    </fragment>
 
 </navigation>

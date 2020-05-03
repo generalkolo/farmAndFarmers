@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleanWithCoRoutine.auth.utils.AuthState
 import com.example.cleanWithCoRoutine.auth.utils.Event
+import com.example.cleanWithCoRoutine.auth.utils.matchingEmail
+import com.example.cleanWithCoRoutine.auth.utils.matchingPassword
 
 class AuthActivityViewModel : ViewModel() {
     private val _authenticationError = MutableLiveData<Event<AuthState>>()
@@ -24,7 +26,7 @@ class AuthActivityViewModel : ViewModel() {
                 _authenticationError.postValue(Event(AuthState.emailError("Email is not a valid email address")))
                 return
             }
-            if (email != "matching@email.com") {
+            if (email != matchingEmail) {
                 _authenticationError.postValue(Event(AuthState.emailError("Wrong Email credentials entered")))
                 return
             }
@@ -33,12 +35,12 @@ class AuthActivityViewModel : ViewModel() {
             _authenticationError.postValue(Event(AuthState.passwordError("Password cannot be empty")))
             return
         } else {
-            if (password != "123456") {
+            if (password != matchingPassword.toString()) {
                 _authenticationError.postValue(Event(AuthState.passwordError("Wrong Password cannot be empty")))
                 return
             }
         }
-        if (email == "MatchingEmail" && password == "MatchingPassword") {
+        if (email == matchingEmail && password == matchingPassword.toString()) {
             _userAuthenticated.postValue(Event(true))
         }
     }

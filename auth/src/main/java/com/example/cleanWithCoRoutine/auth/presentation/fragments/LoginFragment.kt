@@ -1,11 +1,13 @@
 package com.example.cleanWithCoRoutine.auth.presentation.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.cleanWithCoRoutine.auth.databinding.FragmentLoginBinding
 import com.example.cleanWithCoRoutine.auth.presentation.AuthActivityViewModel
 import com.example.cleanWithCoRoutine.auth.utils.AUTH_ERRORS
@@ -32,9 +34,11 @@ class LoginFragment : Fragment() {
         authActivityViewModel.userAuthenticated.observe(
             viewLifecycleOwner,
             EventObserver { validated ->
+                Log.d("Tag", validated.toString())
                 if (validated) {
-                    //TODO: Move to statistics module
                     disAbleViewErrors()
+                    val action = LoginFragmentDirections.navigateToStatistics()
+                    findNavController().navigate(action)
                 }
             })
         authActivityViewModel.authenticationError.observe(viewLifecycleOwner,
