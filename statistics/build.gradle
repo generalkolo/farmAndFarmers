@@ -1,0 +1,83 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
+}
+
+android {
+    compileSdkVersion Versions.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+
+        versionCode Versions.versionCode
+        versionName Versions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    viewBinding {
+        enabled = true
+    }
+
+    // To inline the bytecode built with JVM target 1.8 into
+    // bytecode that is being built with JVM target 1.6. (e.g. navArgs)
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation(
+            fileTree(dir: 'libs', include: ['*.jar']),
+            CoreDependencies.kotlin,
+            CoreDependencies.appCompat,
+            CoreDependencies.coreKtx,
+            CoreDependencies.constraintLayout,
+            CoreDependencies.lifecycle,
+            CoreDependencies.navigationFragment,
+            CoreDependencies.navigationUi,
+            CoreDependencies.navigationFragmentKtx,
+            CoreDependencies.navigationUiKtx,
+            CoreDependencies.legacySupport,
+            CoreDependencies.kotlinStd,
+
+            ViewDependencies.materialComponent,
+            ViewDependencies.materialStepper,
+
+            DependencyInjectionDependencies.dagger,
+            DependencyInjectionDependencies.daggerAndroid,
+    )
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    androidTestImplementation(
+            AndroidTestDependencies.textExt,
+            AndroidTestDependencies.espresso,
+    )
+
+    kapt(
+            DependencyInjectionDependencies.daggerCompiler,
+            DependencyInjectionDependencies.daggerAndroidProcessor,
+    )
+    testImplementation(TestDependencies.junit)
+
+    api(DependencyInjectionDependencies.daggerAndroidSupport)
+}
