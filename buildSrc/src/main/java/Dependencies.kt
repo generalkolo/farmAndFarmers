@@ -25,11 +25,14 @@ object Versions {
     const val gradle = "3.6.0"
     const val testExt = "1.1.1"
     const val materialStepper = "4.3.1"
+    const val safeArgs = "2.2.2"
 }
 
 object ClassPaths {
     const val gradleVersion = "com.android.tools.build:gradle:${Versions.gradle}"
     const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
+    const val safeArgs =
+        "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.safeArgs}"
 }
 
 object CoreDependencies {
@@ -50,7 +53,7 @@ object CoreDependencies {
     const val coroutines =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
     const val legacySupport = "androidx.legacy:legacy-support-v4:${Versions.legacySupport}"
-    const val kotlinStd =  "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlinVersion}"
+    const val kotlinStd = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlinVersion}"
 }
 
 object TestDependencies {

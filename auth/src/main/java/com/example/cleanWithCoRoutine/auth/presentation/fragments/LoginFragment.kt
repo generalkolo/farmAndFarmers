@@ -39,12 +39,12 @@ class LoginFragment : Fragment() {
             })
         authActivityViewModel.authenticationError.observe(viewLifecycleOwner,
             EventObserver { errorType ->
-                when (errorType) {
+                when (errorType.state) {
                     AUTH_ERRORS.EMAIL_ERROR -> {
-                        showEmailError()
+                        showEmailError(errorType.message)
                     }
                     AUTH_ERRORS.PASSWORD_ERROR -> {
-                        showPasswordError()
+                        showPasswordError(errorType.message)
                     }
                 }
             })
@@ -60,19 +60,24 @@ class LoginFragment : Fragment() {
 
     //method to show TextInput errors for the
     // password input
-    private fun showPasswordError() {
-
+    private fun showPasswordError(error: String?) {
+        error?.let {
+            binding.passwordTextInputLayout.error = it
+        }
     }
 
     //method to show TextInput errors for the
     // email input
-    private fun showEmailError() {
-
+    private fun showEmailError(error: String?) {
+        error?.let {
+            binding.emailTextInputEditText.error = it
+        }
     }
 
     private fun initOnClickListener() {
         with(binding) {
             siginButton.setOnClickListener {
+                disAbleViewErrors()
                 val email = emailTextInputEditText.text.toString()
                 val password = passwordTextInputEditText.text.toString()
                 authActivityViewModel.validateEmailAndPassword(email, password)

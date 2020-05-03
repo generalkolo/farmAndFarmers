@@ -3,12 +3,12 @@ package com.example.cleanWithCoRoutine.auth.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleanWithCoRoutine.auth.utils.AUTH_ERRORS
+import com.example.cleanWithCoRoutine.auth.utils.AuthState
 import com.example.cleanWithCoRoutine.auth.utils.Event
 
 class AuthActivityViewModel : ViewModel() {
-    private val _authenticationError = MutableLiveData<Event<AUTH_ERRORS>>()
-    val authenticationError: LiveData<Event<AUTH_ERRORS>>
+    private val _authenticationError = MutableLiveData<Event<AuthState>>()
+    val authenticationError: LiveData<Event<AuthState>>
         get() = _authenticationError
 
     private val _userAuthenticated = MutableLiveData<Event<Boolean>>()
@@ -17,24 +17,24 @@ class AuthActivityViewModel : ViewModel() {
 
     fun validateEmailAndPassword(email: String, password: String) {
         if (email.isEmpty()) {
-            _authenticationError.postValue(Event(AUTH_ERRORS.EMAIL_ERROR))
+            _authenticationError.postValue(Event(AuthState.emailError("Email cannot be empty")))
             return
         } else {
             if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                _authenticationError.postValue(Event(AUTH_ERRORS.EMAIL_ERROR))
+                _authenticationError.postValue(Event(AuthState.emailError("Email is not a valid email address")))
                 return
             }
-            if (email != "matchingEmail") {
-                _authenticationError.postValue(Event(AUTH_ERRORS.EMAIL_ERROR))
+            if (email != "matching@email.com") {
+                _authenticationError.postValue(Event(AuthState.emailError("Wrong Email credentials entered")))
                 return
             }
         }
         if (password.isEmpty()) {
-            _authenticationError.postValue(Event(AUTH_ERRORS.PASSWORD_ERROR))
+            _authenticationError.postValue(Event(AuthState.passwordError("Password cannot be empty")))
             return
         } else {
-            if (password != "MatchingPasword") {
-                _authenticationError.postValue(Event(AUTH_ERRORS.PASSWORD_ERROR))
+            if (password != "123456") {
+                _authenticationError.postValue(Event(AuthState.passwordError("Wrong Password cannot be empty")))
                 return
             }
         }
