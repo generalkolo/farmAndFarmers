@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView style="@style/farms_info_card">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/farmer_image"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@android:drawable/ic_input_add"
+                tools:src="@android:drawable/ic_input_add" />
+
+            <include
+                android:id="@+id/farmer_name"
+                layout="@layout/farm_info_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:description="@{@string/farmer_name}"
+                app:info="@{@string/farmer_name}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/farmer_image"
+                app:layout_constraintTop_toTopOf="@+id/farmer_image" />
+
+            <include
+                android:id="@+id/farm_state"
+                layout="@layout/farm_info_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:description="@{@string/state_of_farm}"
+                app:info="@{@string/state_of_farm}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/farmer_image"
+                app:layout_constraintTop_toBottomOf="@+id/farmer_name" />
+
+            <include
+                android:id="@+id/farm_name"
+                layout="@layout/farm_info_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:description="@{@string/farm_name}"
+                app:info="@{@string/farm_name}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/farmer_image"
+                app:layout_constraintTop_toBottomOf="@+id/farm_state" />
+
+            <include
+                android:id="@+id/date_joined"
+                layout="@layout/farm_info_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:description="@{@string/date_joined}"
+                app:info="@{@string/date_joined}"
+                app:layout_constraintBottom_toBottomOf="@+id/farmer_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/farmer_image"
+                app:layout_constraintTop_toBottomOf="@+id/farm_name" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

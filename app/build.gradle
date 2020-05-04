@@ -30,6 +30,10 @@ android {
         enabled = true
     }
 
+    dataBinding {
+        enabled = true
+    }
+
     // To inline the bytecode built with JVM target 1.8 into
     // bytecode that is being built with JVM target 1.6. (e.g. navArgs)
 
@@ -65,7 +69,8 @@ dependencies {
 
             //Local Libs
             project(':local'),
-            project(':auth')
+            project(':auth'),
+            project(':statistics')
     )
 
     androidTestImplementation(
