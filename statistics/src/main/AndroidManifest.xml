@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.example.cleanWithCoRoutine.statistics">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.cleanWithCoRoutine.statistics">
 
-    <!--    <application>-->
-    <!--        <activity-->
-    <!--            android:name=".presentation.StatisticsActivity"-->
-    <!--            android:label="@string/title_activity_statistics"-->
-    <!--            android:theme="@style/Theme.null.NoActionBar" />-->
-    <!--    </application>-->
+    <application>
+        <activity
+            android:name=".presentation.StatisticsActivity"
+            android:theme="@style/Theme.null.NoActionBar" />
+    </application>
 
 </manifest>

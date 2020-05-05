@@ -4,7 +4,58 @@
     <!--farm_list_item_placeholder-->
     <string name="farmer_name">Farmer Name:</string>
     <string name="farm_name">Farm Name:</string>
-    <string name="state_of_farm">Farm's state:</string>
+    <string name="state_of_farm">Farms state:</string>
     <string name="date_joined">Date Joined</string>
+
+    <!--Stepper Tabs Titles-->
+    <string name="farmers_info">Farmers Details</string>
+    <string name="farm_info">Farms Details</string>
+
+    <string name="nigeria_country_code">+234</string>
+
+    <!--date_picker_item.xml-->
+    <string name="from_text">From</string>
+    <string name="age_text">Age</string>
+
+    <!--nigeria states array-->
+    <string-array name="nigeria_state">
+        <item>Abia</item>
+        <item>Adamawa</item>
+        <item>Akwa Ibom</item>
+        <item>Anambra</item>
+        <item>Bauchi</item>
+        <item>Bayelsa</item>
+        <item>Benue</item>
+        <item>Borno</item>
+        <item>Cross River</item>
+        <item>Delta</item>
+        <item>Ebonyi</item>
+        <item>Edo</item>
+        <item>Ekiti</item>
+        <item>Enugu</item>
+        <item>Gombe</item>
+        <item>Imo</item>
+        <item>Jigawa</item>
+        <item>Kaduna</item>
+        <item>Kano</item>
+        <item>Katsina</item>
+        <item>Kebbi</item>
+        <item>Kogi</item>
+        <item>Kwara</item>
+        <item>Lagos</item>
+        <item>Nasarawa</item>
+        <item>Niger</item>
+        <item>Ogun</item>
+        <item>Ondo</item>
+        <item>Osun</item>
+        <item>Oyo</item>
+        <item>Plateau</item>
+        <item>Rivers</item>
+        <item>Sokoto</item>
+        <item>Taraba</item>
+        <item>Yobe</item>
+        <item>Zamfara</item>
+    </string-array>
+
 
 </resources>

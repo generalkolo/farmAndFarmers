@@ -26,6 +26,7 @@ object Versions {
     const val testExt = "1.1.1"
     const val materialStepper = "4.3.1"
     const val safeArgs = "2.2.2"
+    const val niceSpinner = "1.4.5"
 }
 
 object ClassPaths {
@@ -69,6 +70,7 @@ object ViewDependencies {
     const val materialComponent =
         "com.google.android.material:material:${Versions.materialComponent}"
     const val materialStepper = "com.stepstone.stepper:material-stepper:${Versions.materialStepper}"
+    const val niceSpinner = "com.github.arcadefire:nice-spinner:${Versions.niceSpinner}"
 }
 
 object DependencyInjectionDependencies {

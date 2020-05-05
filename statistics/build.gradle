@@ -65,6 +65,7 @@ dependencies {
 
             ViewDependencies.materialComponent,
             ViewDependencies.materialStepper,
+            ViewDependencies.niceSpinner,
 
             DependencyInjectionDependencies.dagger,
             DependencyInjectionDependencies.daggerAndroid,
