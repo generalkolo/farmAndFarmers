@@ -63,9 +63,15 @@ dependencies {
             CoreDependencies.legacySupport,
             CoreDependencies.kotlinStd,
 
+            UtilityDependencies.rxPermissions,
+            UtilityDependencies.rxJava,
+            UtilityDependencies.glide,
+            UtilityDependencies.googleMaps,
+
             ViewDependencies.materialComponent,
             ViewDependencies.materialStepper,
             ViewDependencies.niceSpinner,
+            ViewDependencies.fresco,
 
             DependencyInjectionDependencies.dagger,
             DependencyInjectionDependencies.daggerAndroid,
@@ -81,6 +87,10 @@ dependencies {
     androidTestImplementation(
             AndroidTestDependencies.textExt,
             AndroidTestDependencies.espresso,
+    )
+
+    annotationProcessor(
+            UtilityDependencies.glideProcessor
     )
 
     kapt(

@@ -17,7 +17,7 @@ object Versions {
 
     const val coroutines = "1.3.5"
     const val room = "2.2.5"
-    const val materialComponent = "1.1.0"
+    const val materialComponent = "1.2.0-alpha06"
     const val dagger = "2.27"
     const val navigation = "2.3.0-alpha06"
     const val constraintLayout = "2.0.0-beta4"
@@ -27,6 +27,11 @@ object Versions {
     const val materialStepper = "4.3.1"
     const val safeArgs = "2.2.2"
     const val niceSpinner = "1.4.5"
+    const val rxPermissions = "0.10.2"
+    const val fresco = "2.2.0"
+    const val rxJava = "2.2.10"
+    const val glide = "4.11.0"
+    const val googleMaps = "16.1.0"
 }
 
 object ClassPaths {
@@ -71,6 +76,7 @@ object ViewDependencies {
         "com.google.android.material:material:${Versions.materialComponent}"
     const val materialStepper = "com.stepstone.stepper:material-stepper:${Versions.materialStepper}"
     const val niceSpinner = "com.github.arcadefire:nice-spinner:${Versions.niceSpinner}"
+    const val fresco = "com.facebook.fresco:fresco:${Versions.fresco}"
 }
 
 object DependencyInjectionDependencies {
@@ -87,4 +93,12 @@ object PersistenceDependencies {
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
+}
+
+object UtilityDependencies {
+    const val rxPermissions = "com.github.tbruyelle:rxpermissions:${Versions.rxPermissions}"
+    const val rxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxJava}"
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    const val glideProcessor = "com.github.bumptech.glide:compiler:${Versions.glide}"
+    const val googleMaps = "com.google.android.gms:play-services-maps:${Versions.googleMaps}"
 }

@@ -3,6 +3,7 @@ package com.example.cleanWithCoRoutine.statistics.presentation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cleanWithCoRoutine.statistics.R
+import com.facebook.drawee.backends.pipeline.Fresco
 
 class StatisticsActivity : AppCompatActivity() {
 
