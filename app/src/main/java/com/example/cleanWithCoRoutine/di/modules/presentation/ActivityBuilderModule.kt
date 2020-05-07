@@ -12,11 +12,6 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ActivityBuilderModule {
 
-//    @ActivityScope
-////    @ContributesAndroidInjector(modules = [MainActivityFragmentBuilder::class])
-//    @ContributesAndroidInjector()
-//    internal abstract fun provideMainActivity(): AppActivity
-
     @ActivityScope
     @ContributesAndroidInjector(modules = [AuthActivityFragmentBuilder::class])
     internal abstract fun provideAuthActivity(): AuthActivity

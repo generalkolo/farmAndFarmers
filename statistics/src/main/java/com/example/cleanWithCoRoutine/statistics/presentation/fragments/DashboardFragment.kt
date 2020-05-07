@@ -54,8 +54,10 @@ class DashboardFragment : DaggerFragment() {
 
     private fun initAdapter(data: List<FarmAndFarmersDetails>?) {
         data?.let {
-            farmDetailsAdapter = FarmAndFarmDetailsAdapter(it, FarmClickedListener {
-                //TODO: Show item that was clicked
+            farmDetailsAdapter = FarmAndFarmDetailsAdapter(it, FarmClickedListener { clickedItem ->
+                statsActivityViewModel.initClickedFarmDetails(clickedItem)
+                val actions = DashboardFragmentDirections.FirstFragmentToFarmerDetailsFragment()
+                findNavController().navigate(actions)
             })
         }
     }
@@ -63,7 +65,8 @@ class DashboardFragment : DaggerFragment() {
     private fun setOnClickListeners() {
         with(binding) {
             addFarmFab.setOnClickListener {
-                val action = DashboardFragmentDirections.FirstFragmentToFarmerDetailsFragment()
+                val action =
+                    DashboardFragmentDirections.actionDashboardFragmentToClickedFarmDetailsFragment()
                 findNavController().navigate(action)
             }
         }

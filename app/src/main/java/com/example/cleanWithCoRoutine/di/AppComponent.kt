@@ -2,7 +2,6 @@ package com.example.cleanWithCoRoutine.di
 
 import com.example.cleanWithCoRoutine.Application
 import com.example.cleanWithCoRoutine.di.modules.AppModule
-import com.example.cleanWithCoRoutine.di.modules.domain.DomainModule
 import com.example.cleanWithCoRoutine.di.modules.local.LocalModule
 import com.example.cleanWithCoRoutine.di.modules.presentation.ActivityBuilderModule
 import com.example.cleanWithCoRoutine.di.modules.presentation.ViewModelModule
@@ -23,7 +22,6 @@ import javax.inject.Singleton
         AppModule::class,
         LocalModule::class,
         RepositoryModule::class,
-        DomainModule::class,
         ViewModelModule::class,
         ActivityBuilderModule::class
     ]

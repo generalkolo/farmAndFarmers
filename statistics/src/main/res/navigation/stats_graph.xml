@@ -18,6 +18,9 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_DashboardFragment_to_clickedFarmDetailsFragment"
+            app:destination="@id/clickedFarmDetailsFragment" />
 
     </fragment>
 
@@ -26,5 +29,11 @@
         android:name="com.example.cleanWithCoRoutine.statistics.presentation.fragments.DetailsContainerFragment"
         android:label="Container Details Fragment"
         tools:layout="@layout/fragment_details_container" />
+
+    <fragment
+        android:id="@+id/clickedFarmDetailsFragment"
+        android:name="com.example.cleanWithCoRoutine.statistics.presentation.fragments.ClickedFarmDetailsFragment"
+        android:label="ClickedFarmDetailsFragment"
+        tools:layout="@layout/fragment_clicked_farm_details" />
 
 </navigation>
