@@ -30,10 +30,7 @@ class StepperAdapter(fm: FragmentManager, context: Context) :
                 step
             }
             1 -> {
-                val step = FarmDetailsFragment()
-                val b = Bundle()
-                b.putInt(CURRENT_STEP_POSITION_KEY, position)
-                step.arguments = b
+                val step = FarmDetailsFragment.newInstance(CURRENT_STEP_POSITION_KEY)
                 step
             }
             else ->

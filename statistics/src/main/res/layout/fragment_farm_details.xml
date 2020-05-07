@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="statsViewModel"
+            type="com.example.cleanWithCoRoutine.statistics.presentation.StatisticActivityViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -59,7 +66,8 @@
                 android:id="@+id/farm_name_textInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="text"
+                android:text="@={statsViewModel.farmName}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,7 +107,8 @@
                 android:id="@+id/farm_address_textInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="text"
+                android:text="@={statsViewModel.farmAddress}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,7 +140,8 @@
                 android:id="@+id/farm_latitude_textInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:text="@={statsViewModel.farmLatitude}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -152,14 +162,16 @@
                 android:id="@+id/farm_longitude_textInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:text="@={statsViewModel.farmLongitude}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <View
+        <fragment
+            android:id="@+id/farms_map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@android:color/black"
             app:layout_constraintBottom_toTopOf="@+id/map_bottom_guideline"
             app:layout_constraintEnd_toStartOf="@+id/right_guideline"
             app:layout_constraintStart_toEndOf="@+id/left_guideline"
