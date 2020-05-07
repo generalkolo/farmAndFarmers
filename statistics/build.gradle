@@ -75,6 +75,8 @@ dependencies {
 
             DependencyInjectionDependencies.dagger,
             DependencyInjectionDependencies.daggerAndroid,
+
+            project(':domain')
     )
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -83,6 +85,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
     androidTestImplementation(
             AndroidTestDependencies.textExt,

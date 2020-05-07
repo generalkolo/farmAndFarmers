@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="farmItem"
+            type="com.example.cleanWithCoRoutine.domain.models.statistics.FarmAndFarmersDetails" />
+    </data>
+
     <com.google.android.material.card.MaterialCardView style="@style/farms_info_card">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +30,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:description="@{@string/farmer_name}"
-                app:info="@{@string/farmer_name}"
+                app:info="@{farmItem.firstName}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/farmer_image"
                 app:layout_constraintTop_toTopOf="@+id/farmer_image" />
@@ -34,7 +41,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:description="@{@string/state_of_farm}"
-                app:info="@{@string/state_of_farm}"
+                app:info="@{farmItem.stateLocationOfFarm}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/farmer_image"
                 app:layout_constraintTop_toBottomOf="@+id/farmer_name" />
@@ -45,7 +52,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:description="@{@string/farm_name}"
-                app:info="@{@string/farm_name}"
+                app:info="@{farmItem.farmName}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/farmer_image"
                 app:layout_constraintTop_toBottomOf="@+id/farm_state" />
@@ -56,7 +63,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:description="@{@string/date_joined}"
-                app:info="@{@string/date_joined}"
+                app:info="@{farmItem.phoneNumber}"
                 app:layout_constraintBottom_toBottomOf="@+id/farmer_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/farmer_image"

@@ -5,26 +5,32 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.cleanWithCoRoutine.auth.databinding.FragmentLoginBinding
 import com.example.cleanWithCoRoutine.auth.presentation.AuthActivityViewModel
 import com.example.cleanWithCoRoutine.auth.utils.AUTH_ERRORS
 import com.example.cleanWithCoRoutine.auth.utils.EventObserver
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
-class LoginFragment : Fragment() {
+class LoginFragment : DaggerFragment() {
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
-    private lateinit var authActivityViewModel: AuthActivityViewModel
+
+    private val authActivityViewModel by activityViewModels<AuthActivityViewModel> {
+        viewModelFactory
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        authActivityViewModel =
-            ViewModelProvider(activity!!).get(AuthActivityViewModel::class.java)
         initOnClickListener()
         initObservers()
         return binding.root

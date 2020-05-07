@@ -52,6 +52,8 @@ dependencies {
             CoreDependencies.coreKtx,
             CoreDependencies.constraintLayout,
             CoreDependencies.lifecycle,
+            CoreDependencies.viewModelLifecycle,
+            CoreDependencies.activityKtx,
             CoreDependencies.navigationFragment,
             CoreDependencies.navigationUi,
             CoreDependencies.navigationFragmentKtx,
@@ -65,7 +67,8 @@ dependencies {
             DependencyInjectionDependencies.dagger,
             DependencyInjectionDependencies.daggerAndroid,
 
-            project(':statistics')
+            project(':statistics'),
+            project(':domain')
     )
 
     androidTestImplementation(

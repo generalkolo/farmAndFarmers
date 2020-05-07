@@ -7,10 +7,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import java.text.SimpleDateFormat
-import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
-import java.time.ZoneOffset
 import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.math.abs
@@ -36,7 +34,6 @@ private fun LocalDateTime.toMillis(zone: ZoneId = ZoneId.systemDefault()) =
 fun Long.differenceInYears(olderLong: Long? = LocalDateTime.now().toMillis()): String {
     val currentYear = convertLongToTime(olderLong!!)
     val choosenYear = convertLongToTime(this)
-
 
     val diffInMillies: Long = abs(currentYear.time - choosenYear.time)
     val diff: Long = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS)

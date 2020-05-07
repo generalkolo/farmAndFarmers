@@ -7,8 +7,24 @@ import com.example.cleanWithCoRoutine.auth.utils.AuthState
 import com.example.cleanWithCoRoutine.auth.utils.Event
 import com.example.cleanWithCoRoutine.auth.utils.matchingEmail
 import com.example.cleanWithCoRoutine.auth.utils.matchingPassword
+import com.example.cleanWithCoRoutine.domain.models.auth.User
+import com.example.cleanWithCoRoutine.domain.usecases.auth.GetDefaultUserLoginUsecase
+import javax.inject.Inject
 
-class AuthActivityViewModel : ViewModel() {
+class AuthActivityViewModel @Inject constructor(
+    private val getDefaultUserLoginUsecase: GetDefaultUserLoginUsecase
+) : ViewModel() {
+
+    private lateinit var user: User
+
+    init {
+//        viewModelScope.launch {
+//            getDefaultUserLoginUsecase.invoke().collect { defaultUser ->
+//                user = defaultUser
+//            }
+//        }
+    }
+
     private val _authenticationError = MutableLiveData<Event<AuthState>>()
     val authenticationError: LiveData<Event<AuthState>>
         get() = _authenticationError
@@ -40,7 +56,7 @@ class AuthActivityViewModel : ViewModel() {
                 return
             }
         }
-        if (email == matchingEmail && password == matchingPassword.toString()) {
+        if (email == user.email && password == user.password) {
             _userAuthenticated.postValue(Event(true))
         }
     }

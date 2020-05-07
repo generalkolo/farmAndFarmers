@@ -123,6 +123,20 @@
             app:layout_constraintStart_toEndOf="@+id/left_guideline"
             app:layout_constraintTop_toBottomOf="@+id/farm_address_textInputLayout" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/displayOnMap"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="diplay on map"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/farm_coordinates_text"
+            app:layout_constraintEnd_toEndOf="@id/right_guideline"
+            app:layout_constraintTop_toTopOf="@+id/farm_coordinates_text"
+            app:strokeColor="@color/colorPrimary" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/farm_latitude"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -134,7 +148,7 @@
             app:errorEnabled="true"
             app:layout_constraintEnd_toStartOf="@+id/farm_longitude"
             app:layout_constraintStart_toEndOf="@+id/left_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/farm_coordinates_text">
+            app:layout_constraintTop_toBottomOf="@+id/displayOnMap">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/farm_latitude_textInputEditText"
@@ -151,12 +165,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
             android:hint="Longitude"
             app:errorEnabled="true"
             app:layout_constraintEnd_toStartOf="@+id/right_guideline"
             app:layout_constraintStart_toEndOf="@+id/farm_latitude"
-            app:layout_constraintTop_toBottomOf="@+id/farm_coordinates_text">
+            app:layout_constraintTop_toTopOf="@+id/farm_latitude">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/farm_longitude_textInputEditText"

@@ -11,7 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.cleanWithCoRoutine.statistics.R
 import com.example.cleanWithCoRoutine.statistics.databinding.FragmentFarmersDetailsBinding
@@ -24,13 +24,20 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.stepstone.stepper.Step
 import com.stepstone.stepper.VerificationError
 import com.tbruyelle.rxpermissions2.RxPermissions
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
-class FarmerDetailsFragment : Fragment(), Step {
+class FarmerDetailsFragment : DaggerFragment(), Step {
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private var _binding: FragmentFarmersDetailsBinding? = null
     private val binding get() = _binding!!
     private lateinit var rxPermissions: RxPermissions
-    private lateinit var statsActivityViewModel: StatisticActivityViewModel
+
+    private val statsActivityViewModel by activityViewModels<StatisticActivityViewModel> {
+        viewModelFactory
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,8 +45,6 @@ class FarmerDetailsFragment : Fragment(), Step {
     ): View? {
         Fresco.initialize(activity!!)
         _binding = FragmentFarmersDetailsBinding.inflate(inflater, container, false)
-        statsActivityViewModel =
-            ViewModelProvider(activity!!).get(StatisticActivityViewModel::class.java)
         binding.statsViewModel = statsActivityViewModel
         return binding.root
     }

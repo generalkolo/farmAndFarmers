@@ -64,6 +64,8 @@ dependencies {
             ViewDependencies.materialComponent,
             ViewDependencies.materialStepper,
 
+            UtilityDependencies.googleMaps,
+
             DependencyInjectionDependencies.dagger,
             DependencyInjectionDependencies.daggerAndroid,
 

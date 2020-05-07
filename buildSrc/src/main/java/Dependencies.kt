@@ -14,6 +14,7 @@ object Versions {
     const val espresso = "3.2.0"
     const val appCompat = "1.1.0"
     const val legacySupport = "1.0.0"
+    const val activityVersion = "1.2.0-alpha04"
 
     const val coroutines = "1.3.5"
     const val room = "2.2.5"
@@ -48,6 +49,7 @@ object CoreDependencies {
     const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+    const val viewModelLifecycle = "androidx.lifecycle:lifecycle-viewmodel:${Versions.lifecycle}"
     const val navigationFragmentKtx =
         "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val navigationFragment =
@@ -60,6 +62,7 @@ object CoreDependencies {
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
     const val legacySupport = "androidx.legacy:legacy-support-v4:${Versions.legacySupport}"
     const val kotlinStd = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlinVersion}"
+    const val activityKtx = "androidx.activity:activity-ktx:${Versions.activityVersion}"
 }
 
 object TestDependencies {
