@@ -16,10 +16,12 @@ annotation class ViewModelKey(val value: KClass<out ViewModel>)
  * Scopes dependencies injected into activity to be preserved as long as the activity component is available
  */
 @Scope
+@Retention(AnnotationRetention.RUNTIME)
 annotation class ActivityScope
 
 /**
  * Scopes dependencies injected into fragment to be preserved as long as the fragment component is available
  */
 @Scope
+@Retention(AnnotationRetention.RUNTIME)
 annotation class FragmentScope

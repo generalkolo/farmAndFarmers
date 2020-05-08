@@ -8,7 +8,6 @@ import com.example.cleanWithCoRoutine.statistics.presentation.StatisticsActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
-
 @Module
 abstract class ActivityBuilderModule {
 
@@ -19,6 +18,4 @@ abstract class ActivityBuilderModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = [StatisticsFragmentBuilder::class])
     internal abstract fun provideStatisticsActivity(): StatisticsActivity
-
-
 }

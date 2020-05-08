@@ -63,6 +63,7 @@ dependencies {
 
             ViewDependencies.materialComponent,
             ViewDependencies.materialStepper,
+            ViewDependencies.fresco,
 
             UtilityDependencies.googleMaps,
 

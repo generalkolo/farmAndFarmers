@@ -5,7 +5,7 @@
     <application>
         <activity
             android:name=".presentation.StatisticsActivity"
-            android:theme="@style/Theme.MaterialComponents.Light" />
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
     </application>
 
 </manifest>

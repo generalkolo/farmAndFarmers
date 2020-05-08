@@ -18,14 +18,15 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.stepstone.stepper.Step
+import com.stepstone.stepper.BlockingStep
+import com.stepstone.stepper.StepperLayout
 import com.stepstone.stepper.VerificationError
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
 private const val ARG_STEP_POSITION = "ARG_STEP_POSITION"
 
-class FarmDetailsFragment : DaggerFragment(), Step, OnMapReadyCallback {
+class FarmDetailsFragment : DaggerFragment(), BlockingStep, OnMapReadyCallback {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -52,6 +53,7 @@ class FarmDetailsFragment : DaggerFragment(), Step, OnMapReadyCallback {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentFarmDetailsBinding.inflate(inflater, container, false)
+        binding.statsViewModel = statsActivityViewModel
         val mapFragment =
             childFragmentManager.findFragmentById(R.id.farms_map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -71,25 +73,28 @@ class FarmDetailsFragment : DaggerFragment(), Step, OnMapReadyCallback {
     }
 
     private fun initObservers() {
-        statsActivityViewModel.toastMessage.observe(this, EventObserver { message ->
+        statsActivityViewModel.toastMessage.observe(viewLifecycleOwner, EventObserver { message ->
             showToast(message)
         })
-        statsActivityViewModel.showLatLngOnMap.observe(this, EventObserver { showOnMap ->
-            if (showOnMap) {
-                placeMarkerOnMap(
-                    LatLng(
-                        binding.farmLatitudeTextInputEditText.text.toString().toDouble(),
-                        binding.farmLongitudeTextInputEditText.text.toString().toDouble()
+        statsActivityViewModel.showLatLngOnMap.observe(
+            viewLifecycleOwner,
+            EventObserver { showOnMap ->
+                if (showOnMap) {
+                    placeMarkerOnMap(
+                        LatLng(
+                            binding.farmLatitudeTextInputEditText.text.toString().toDouble(),
+                            binding.farmLongitudeTextInputEditText.text.toString().toDouble()
+                        )
                     )
-                )
-            }
-        })
+                }
+            })
     }
 
     private fun initSpinnerItems() {
         with(binding.stateSpinner) {
             val states = resources.getStringArray(R.array.nigeria_state).toList()
             attachDataSource(states)
+            statsActivityViewModel.initStateLocationOfFarm(states[0])
             setOnSpinnerItemSelectedListener { parent, _, position, _ ->
                 val clickedState = parent.getItemAtPosition(position)
                 statsActivityViewModel.initStateLocationOfFarm(clickedState.toString())
@@ -100,7 +105,7 @@ class FarmDetailsFragment : DaggerFragment(), Step, OnMapReadyCallback {
     private fun initClickListeners() {
         with(binding) {
             saveButton.setOnClickListener {
-                statsActivityViewModel.insertDetails()
+                statsActivityViewModel.confirmFarmsFormIsFilled()
             }
             displayOnMap.setOnClickListener {
                 statsActivityViewModel.verifyLatAndLng(
@@ -117,20 +122,20 @@ class FarmDetailsFragment : DaggerFragment(), Step, OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15.0F))
     }
 
-    override fun onSelected() {
+    override fun onBackClicked(callback: StepperLayout.OnBackClickedCallback?) {}
 
-    }
+    override fun onSelected() {}
 
+    override fun onCompleteClicked(callback: StepperLayout.OnCompleteClickedCallback?) {}
+
+    override fun onNextClicked(callback: StepperLayout.OnNextClickedCallback?) {}
 
     override fun verifyStep(): VerificationError? {
         return null
     }
 
-    override fun onError(error: VerificationError) {}
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onError(error: VerificationError) {
+        showToast("Please ensure that all fields are filled correctly")
     }
 
     companion object {
@@ -145,5 +150,10 @@ class FarmDetailsFragment : DaggerFragment(), Step, OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

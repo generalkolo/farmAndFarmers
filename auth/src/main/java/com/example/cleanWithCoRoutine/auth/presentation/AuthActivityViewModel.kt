@@ -3,12 +3,13 @@ package com.example.cleanWithCoRoutine.auth.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.cleanWithCoRoutine.auth.utils.AuthState
 import com.example.cleanWithCoRoutine.auth.utils.Event
-import com.example.cleanWithCoRoutine.auth.utils.matchingEmail
-import com.example.cleanWithCoRoutine.auth.utils.matchingPassword
 import com.example.cleanWithCoRoutine.domain.models.auth.User
 import com.example.cleanWithCoRoutine.domain.usecases.auth.GetDefaultUserLoginUsecase
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class AuthActivityViewModel @Inject constructor(
@@ -18,11 +19,11 @@ class AuthActivityViewModel @Inject constructor(
     private lateinit var user: User
 
     init {
-//        viewModelScope.launch {
-//            getDefaultUserLoginUsecase.invoke().collect { defaultUser ->
-//                user = defaultUser
-//            }
-//        }
+        viewModelScope.launch {
+            getDefaultUserLoginUsecase.invoke().collect { defaultUser ->
+                user = defaultUser
+            }
+        }
     }
 
     private val _authenticationError = MutableLiveData<Event<AuthState>>()
@@ -42,7 +43,7 @@ class AuthActivityViewModel @Inject constructor(
                 _authenticationError.postValue(Event(AuthState.emailError("Email is not a valid email address")))
                 return
             }
-            if (email != matchingEmail) {
+            if (email != user.email) {
                 _authenticationError.postValue(Event(AuthState.emailError("Wrong Email credentials entered")))
                 return
             }
@@ -51,8 +52,8 @@ class AuthActivityViewModel @Inject constructor(
             _authenticationError.postValue(Event(AuthState.passwordError("Password cannot be empty")))
             return
         } else {
-            if (password != matchingPassword.toString()) {
-                _authenticationError.postValue(Event(AuthState.passwordError("Wrong Password cannot be empty")))
+            if (password != user.password) {
+                _authenticationError.postValue(Event(AuthState.passwordError("Wrong Password entered")))
                 return
             }
         }

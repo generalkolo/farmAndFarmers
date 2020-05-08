@@ -34,13 +34,24 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.9" />
 
+    <TextView
+        style="@style/TextAppearance.MaterialComponents.Headline5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="@string/enter_sign_in_credentials"
+        app:layout_constraintBottom_toTopOf="@+id/email_textInputLayout"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintStart_toEndOf="@+id/left_guideline" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email_textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:hint="Email"
+        android:hint="@string/email_text"
         app:errorEnabled="true"
         app:layout_constraintBottom_toTopOf="@+id/password_textInputLayout"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
@@ -61,7 +72,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="Password"
+        android:hint="@string/password_text"
         app:endIconMode="password_toggle"
         app:errorEnabled="true"
         app:layout_constraintBottom_toBottomOf="@+id/center_guideline"
@@ -73,7 +84,7 @@
             android:id="@+id/password_textInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberPassword" />
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,7 +93,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        android:text="Sign in"
+        android:text="@string/btn_sign_in_text"
         app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintStart_toEndOf="@+id/left_guideline"

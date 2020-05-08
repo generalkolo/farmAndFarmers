@@ -1,11 +1,12 @@
 <resources>
     <string name="title_activity_statistics">StatisticsActivity</string>
+    <string name="add_new_farm_details_text">Add New Farm Details</string>
 
     <!--farm_list_item_placeholder-->
-    <string name="farmer_name">Farmer Name:</string>
+    <string name="farmer_name">Farmer\'s Name:</string>
     <string name="farm_name">Farm Name:</string>
-    <string name="state_of_farm">Farms state:</string>
-    <string name="date_joined">Date Joined</string>
+    <string name="state_of_farm">Farm Location(State)</string>
+    <string name="farmers_number">Farmer\'s Phone</string>
 
     <!--Stepper Tabs Titles-->
     <string name="farmers_info">Farmers Details</string>
@@ -16,6 +17,23 @@
     <!--date_picker_item.xml-->
     <string name="from_text">From</string>
     <string name="age_text">Age</string>
+
+    <!--bio_info_text-->
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="state_of_origin">State of Origin</string>
+    <string name="farm_details">Farm Details</string>
+    <string name="display_farm_name">Farm Name</string>
+    <string name="farm_coordinates">Farm Coordinates</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="farm_address">Farm Address</string>
+    <string name="state_where_farm_is_located">State where farm is located</string>
+    <string name="date_of_birth_holder">Date of Birth (DOB)</string>
+
+    <!--place holders-->
+    <string name="first_last_name">%s %s</string>
 
     <!--nigeria states array-->
     <string-array name="nigeria_state">
@@ -56,7 +74,4 @@
         <item>Yobe</item>
         <item>Zamfara</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 </resources>

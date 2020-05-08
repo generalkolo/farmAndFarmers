@@ -6,72 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".presentation.fragments.DashboardFragment">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/farms_card"
-        style="@style/statistics_card"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintEnd_toStartOf="@+id/farmers_card"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/number_of_farm_text"
-                style="@style/header_text"
-                android:text="Number of Farmers" />
-
-            <TextView
-                android:id="@+id/farm_number"
-                style="@style/statistics_number"
-                android:text="1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/number_of_farm_text"
-                tools:text="1" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/farmers_card"
-        style="@style/statistics_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/farms_card"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/number_of_farmers_text"
-                style="@style/header_text"
-                android:text="Number of Farms" />
-
-            <TextView
-                android:id="@+id/farmers_number"
-                style="@style/statistics_number"
-                android:text="2"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/number_of_farmers_text"
-                tools:text="2" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
-
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/farmdetailsRecView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/farmers_card"
+        app:layout_constraintTop_toTopOf="parent"
         tools:itemCount="5"
         tools:listitem="@layout/farm_list_item" />
 

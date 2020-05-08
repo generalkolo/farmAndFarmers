@@ -2,7 +2,6 @@ package com.example.cleanWithCoRoutine.statistics.adapters
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.FragmentManager
 import com.example.cleanWithCoRoutine.statistics.R
 import com.example.cleanWithCoRoutine.statistics.presentation.fragments.FarmDetailsFragment
@@ -20,7 +19,6 @@ class StepperAdapter(fm: FragmentManager, context: Context) :
     override fun getCount(): Int = 2
 
     override fun createStep(position: Int): Step {
-        Log.e("Adapter", position.toString())
         return when (position) {
             0 -> {
                 val step = FarmerDetailsFragment()

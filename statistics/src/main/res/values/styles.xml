@@ -22,7 +22,7 @@
 
     <style name="farms_info_card" parent="base_card">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_height">110dp</item>
     </style>
 
     <style name="statistics_number">

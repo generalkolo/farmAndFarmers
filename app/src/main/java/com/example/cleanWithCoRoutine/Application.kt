@@ -2,6 +2,7 @@ package com.example.cleanWithCoRoutine
 
 import com.example.cleanWithCoRoutine.di.AppComponent
 import com.example.cleanWithCoRoutine.di.DaggerAppComponent
+import com.facebook.drawee.backends.pipeline.Fresco
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import dagger.android.DispatchingAndroidInjector
@@ -19,6 +20,8 @@ open class Application : DaggerApplication(), HasAndroidInjector {
 
     override fun onCreate() {
         super.onCreate()
+        // Initialize the Fresco class
+        Fresco.initialize(this)
 //        appComponent = DaggerAppComponent.factory().create(applicationContext)
 //
 //        getApplicationComponent().inject(this)

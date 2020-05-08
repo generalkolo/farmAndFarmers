@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,9 +16,6 @@ import com.example.cleanWithCoRoutine.statistics.presentation.StatisticActivityV
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class DashboardFragment : DaggerFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -56,9 +52,14 @@ class DashboardFragment : DaggerFragment() {
         data?.let {
             farmDetailsAdapter = FarmAndFarmDetailsAdapter(it, FarmClickedListener { clickedItem ->
                 statsActivityViewModel.initClickedFarmDetails(clickedItem)
-                val actions = DashboardFragmentDirections.FirstFragmentToFarmerDetailsFragment()
+                val actions =
+                    DashboardFragmentDirections.actionDashboardFragmentToClickedFarmDetailsFragment()
                 findNavController().navigate(actions)
             })
+            with(binding) {
+                dashboaedFragment.farmdetailsRecView.adapter = farmDetailsAdapter
+                dashboaedFragment.farmdetailsRecView.hasFixedSize()
+            }
         }
     }
 
@@ -66,7 +67,7 @@ class DashboardFragment : DaggerFragment() {
         with(binding) {
             addFarmFab.setOnClickListener {
                 val action =
-                    DashboardFragmentDirections.actionDashboardFragmentToClickedFarmDetailsFragment()
+                    DashboardFragmentDirections.FirstFragmentToFarmerDetailsFragment()
                 findNavController().navigate(action)
             }
         }

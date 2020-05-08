@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".presentation.fragments.DashboardFragment">
 
-    <include layout="@layout/dashboard_content" />
+    <include
+        android:id="@+id/dashboaedFragment"
+        layout="@layout/dashboard_content" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_farm_fab"
@@ -14,6 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:contentDescription="@string/add_new_farm_details_text" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

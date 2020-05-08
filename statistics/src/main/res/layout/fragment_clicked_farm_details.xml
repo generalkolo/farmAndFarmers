@@ -23,7 +23,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/center_guideline"
@@ -48,7 +48,6 @@
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/profile_image"
-                    viewElevation="20"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginTop="20dp"
@@ -59,116 +58,69 @@
                     app:roundAsCircle="true"
                     tools:elevation="20dp" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <include
                     android:id="@+id/firstName_textInputLayout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    layout="@layout/farm_details_item"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_marginRight="4dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_marginBottom="8dp"
-                    android:hint="First Name"
-                    app:errorEnabled="true"
+                    app:displayText="@{@string/first_name}"
                     app:layout_constraintEnd_toStartOf="@+id/lastName_textInputLayout"
                     app:layout_constraintStart_toEndOf="@+id/left_guideline"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_image">
+                    app:layout_constraintTop_toBottomOf="@+id/profile_image"
+                    app:valueText="@{statsViewModel.clickedFarmDetails.firstName}" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/firstName_textInputEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:text="@{statsViewModel.clickedFarmDetails.firstName}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
+                <include
                     android:id="@+id/lastName_textInputLayout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    layout="@layout/farm_details_item"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="4dp"
                     android:layout_marginBottom="8dp"
-                    android:hint="Last Name"
-                    app:errorEnabled="true"
+                    app:displayText="@{@string/last_name}"
                     app:layout_constraintEnd_toStartOf="@+id/right_guideline"
                     app:layout_constraintStart_toEndOf="@+id/firstName_textInputLayout"
-                    app:layout_constraintTop_toTopOf="@+id/firstName_textInputLayout">
+                    app:layout_constraintTop_toTopOf="@+id/firstName_textInputLayout"
+                    app:valueText="@{statsViewModel.clickedFarmDetails.lastName}" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/lastName_textInputEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:text="@{statsViewModel.clickedFarmDetails.lastName}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
+                <include
                     android:id="@+id/phone_number_textInputLayout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    layout="@layout/farm_details_item"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:hint="Phone Number"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="11"
-                    app:errorEnabled="true"
+                    app:displayText="@{@string/phone_number}"
                     app:layout_constraintEnd_toStartOf="@+id/right_guideline"
                     app:layout_constraintStart_toEndOf="@+id/left_guideline"
-                    app:layout_constraintTop_toBottomOf="@+id/firstName_textInputLayout">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/phone_number_textInputEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:text="@{statsViewModel.clickedFarmDetails.phoneNumber}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/date_of_birth"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Date of Birth (DOB)"
-                    android:textColor="@android:color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toEndOf="@+id/left_guideline"
-                    app:layout_constraintTop_toBottomOf="@+id/phone_number_textInputLayout" />
+                    app:layout_constraintTop_toBottomOf="@+id/firstName_textInputLayout"
+                    app:valueText="@{statsViewModel.clickedFarmDetails.phoneNumber}" />
 
                 <include
                     android:id="@+id/date_of_birth_picker"
-                    layout="@layout/date_picker_item"
+                    layout="@layout/farm_details_item"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    app:label="@{@string/from_text}"
+                    app:displayText="@{@string/date_of_birth_holder}"
                     app:layout_constraintEnd_toStartOf="@+id/right_guideline"
                     app:layout_constraintStart_toEndOf="@+id/left_guideline"
-                    app:layout_constraintTop_toBottomOf="@+id/date_of_birth" />
+                    app:layout_constraintTop_toBottomOf="@+id/phone_number_textInputLayout"
+                    app:valueText="@{statsViewModel.clickedFarmDetails.dateOfBirth}" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/state_of_origin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="State of origin"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toEndOf="@+id/left_guideline"
-                    app:layout_constraintTop_toBottomOf="@+id/date_of_birth_picker" />
-
-                <org.angmarch.views.NiceSpinner
+                <include
                     android:id="@+id/state_spinner"
+                    layout="@layout/farm_details_item"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    app:displayText="@{@string/state_of_origin}"
                     app:layout_constraintEnd_toStartOf="@+id/right_guideline"
                     app:layout_constraintStart_toEndOf="@+id/left_guideline"
-                    app:layout_constraintTop_toBottomOf="@+id/state_of_origin" />
+                    app:layout_constraintTop_toBottomOf="@+id/date_of_birth_picker"
+                    app:valueText="@{statsViewModel.clickedFarmDetails.farmersStateOfOrigin}" />
 
                 <TextView
                     android:id="@+id/farm_details_text"
@@ -176,127 +128,90 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Farm Details"
+                    android:gravity="center"
+                    android:text="@string/farm_details"
                     app:layout_constraintEnd_toStartOf="@id/right_guideline"
                     app:layout_constraintStart_toEndOf="@+id/left_guideline"
                     app:layout_constraintTop_toBottomOf="@+id/state_spinner" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <include
                     android:id="@+id/farm_name_textInputLayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    layout="@layout/farm_details_item"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:hint="Farm Name"
-                    app:errorEnabled="true"
+                    app:displayText="@{@string/display_farm_name}"
                     app:layout_constraintEnd_toStartOf="@+id/right_guideline"
                     app:layout_constraintStart_toEndOf="@+id/left_guideline"
-                    app:layout_constraintTop_toBottomOf="@+id/farm_details_text">
+                    app:layout_constraintTop_toBottomOf="@+id/farm_details_text"
+                    app:valueText="@{statsViewModel.clickedFarmDetails.farmName}" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/farm_name_textInputEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:text="@{statsViewModel.clickedFarmDetails.farmName}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/where_state_is_located"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="State where farm is located"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toEndOf="@+id/left_guideline"
-                    app:layout_constraintTop_toBottomOf="@+id/farm_name_textInputLayout" />
-
-                <org.angmarch.views.NiceSpinner
+                <include
                     android:id="@+id/farm_state_spinner"
+                    layout="@layout/farm_details_item"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
+                    app:displayText="@{@string/state_where_farm_is_located}"
                     app:layout_constraintEnd_toStartOf="@+id/right_guideline"
                     app:layout_constraintStart_toEndOf="@+id/left_guideline"
-                    app:layout_constraintTop_toBottomOf="@+id/where_state_is_located" />
+                    app:layout_constraintTop_toBottomOf="@+id/farm_name_textInputLayout"
+                    app:valueText="@{statsViewModel.clickedFarmDetails.stateLocationOfFarm}" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <include
                     android:id="@+id/farm_address_textInputLayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    layout="@layout/farm_details_item"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:hint="Farm Address"
-                    app:errorEnabled="true"
+                    app:displayText="@{@string/farm_address}"
                     app:layout_constraintEnd_toStartOf="@+id/right_guideline"
                     app:layout_constraintStart_toEndOf="@+id/left_guideline"
-                    app:layout_constraintTop_toBottomOf="@+id/farm_state_spinner">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/farm_address_textInputEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:text="@{statsViewModel.clickedFarmDetails.farmAddress}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                    app:layout_constraintTop_toBottomOf="@+id/farm_state_spinner"
+                    app:valueText="@{statsViewModel.clickedFarmDetails.farmAddress}" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/farm_coordinates_text"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Farm Coordinates"
+                    android:gravity="center"
+                    android:text="@string/farm_coordinates"
                     android:textColor="@android:color/black"
                     android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@id/right_guideline"
                     app:layout_constraintStart_toEndOf="@+id/left_guideline"
                     app:layout_constraintTop_toBottomOf="@+id/farm_address_textInputLayout" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <include
                     android:id="@+id/farm_latitude"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    layout="@layout/farm_details_item"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="4dp"
-                    android:hint="Latitude"
-                    app:errorEnabled="true"
+                    app:displayText="@{@string/latitude}"
                     app:layout_constraintEnd_toStartOf="@+id/farm_longitude"
                     app:layout_constraintStart_toEndOf="@+id/left_guideline"
-                    app:layout_constraintTop_toBottomOf="@+id/farm_coordinates_text">
+                    app:layout_constraintTop_toBottomOf="@+id/farm_coordinates_text"
+                    app:valueText="@{statsViewModel.clickedFarmDetails.farmLatitude}" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/farm_latitude_textInputEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:text="@{statsViewModel.clickedFarmDetails.farmLatitude}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
+                <include
                     android:id="@+id/farm_longitude"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    layout="@layout/farm_details_item"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:hint="Longitude"
-                    app:errorEnabled="true"
+                    app:displayText="@{@string/longitude}"
                     app:layout_constraintEnd_toStartOf="@+id/right_guideline"
                     app:layout_constraintStart_toEndOf="@+id/farm_latitude"
-                    app:layout_constraintTop_toTopOf="@+id/farm_latitude">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/farm_longitude_textInputEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:text="@{statsViewModel.clickedFarmDetails.farmLongitude}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                    app:layout_constraintTop_toTopOf="@+id/farm_latitude"
+                    app:valueText="@{statsViewModel.clickedFarmDetails.farmLongitude}" />
 
                 <fragment
                     android:id="@+id/farms_map"
@@ -304,7 +219,8 @@
                     android:layout_width="0dp"
                     android:layout_height="150dp"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintBottom_toTopOf="@+id/map_bottom_guideline"
+                    android:layout_marginBottom="32dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/right_guideline"
                     app:layout_constraintStart_toEndOf="@+id/left_guideline"
                     app:layout_constraintTop_toBottomOf="@+id/farm_latitude" />

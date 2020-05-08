@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,17 +18,17 @@ import com.example.cleanWithCoRoutine.statistics.R
 import com.example.cleanWithCoRoutine.statistics.databinding.FragmentFarmersDetailsBinding
 import com.example.cleanWithCoRoutine.statistics.presentation.StatisticActivityViewModel
 import com.example.cleanWithCoRoutine.statistics.utils.*
-import com.facebook.drawee.backends.pipeline.Fresco
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.stepstone.stepper.Step
+import com.stepstone.stepper.BlockingStep
+import com.stepstone.stepper.StepperLayout
 import com.stepstone.stepper.VerificationError
 import com.tbruyelle.rxpermissions2.RxPermissions
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class FarmerDetailsFragment : DaggerFragment(), Step {
+class FarmerDetailsFragment : DaggerFragment(), BlockingStep {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -43,7 +44,6 @@ class FarmerDetailsFragment : DaggerFragment(), Step {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Fresco.initialize(activity!!)
         _binding = FragmentFarmersDetailsBinding.inflate(inflater, container, false)
         binding.statsViewModel = statsActivityViewModel
         return binding.root
@@ -59,6 +59,10 @@ class FarmerDetailsFragment : DaggerFragment(), Step {
         (activity as AppCompatActivity).supportActionBar?.hide()
         initSpinnerItems()
         initClickListeners()
+        initObservers()
+    }
+
+    private fun initObservers() {
     }
 
     private fun initSpinnerItems() {
@@ -88,7 +92,7 @@ class FarmerDetailsFragment : DaggerFragment(), Step {
                     setTitleText("Enter date of birth")
                 }
                 val picker = builder.build()
-                picker.show(activity!!.supportFragmentManager, picker.toString())
+                picker.show(requireActivity().supportFragmentManager, picker.toString())
                 picker.addOnPositiveButtonClickListener {
                     val dateSelected = picker.headerText
                     val yearDifference = it.differenceInYears()
@@ -103,10 +107,10 @@ class FarmerDetailsFragment : DaggerFragment(), Step {
                 }
             }
             nextButton.setOnClickListener {
-                statsActivityViewModel.revealContents()
+                statsActivityViewModel.confirmFarmersFormIsFilled()
             }
             uploadProfileImage.setOnClickListener {
-                val chooseDisplayImageDialog = AlertDialog.Builder(activity!!)
+                val chooseDisplayImageDialog = AlertDialog.Builder(requireActivity())
                 chooseDisplayImageDialog.setTitle("Choose your profile picture")
                 val chooseDisplayImageDialogItems =
                     arrayOf("Take Photo", "Choose from Gallery", "Cancel")
@@ -158,7 +162,7 @@ class FarmerDetailsFragment : DaggerFragment(), Step {
             GALLERY_REQUEST_CODE -> {
                 if (data != null) {
                     val bitmap = data.data.let {
-                        MediaStore.Images.Media.getBitmap(activity!!.contentResolver, it)
+                        MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, it)
                     }
                     displayImageUsingGlide(bitmap, binding.profileImage)
                 }
@@ -173,9 +177,15 @@ class FarmerDetailsFragment : DaggerFragment(), Step {
         }
     }
 
+    override fun onBackClicked(callback: StepperLayout.OnBackClickedCallback?) {}
+
     override fun onSelected() {}
+    override fun onCompleteClicked(callback: StepperLayout.OnCompleteClickedCallback?) {}
+
+    override fun onNextClicked(callback: StepperLayout.OnNextClickedCallback?) {}
 
     override fun verifyStep(): VerificationError? {
+        Log.d("ggggg", "verifyStep")
         return null
     }
 
