@@ -1,4 +1,4 @@
-package com.example.cleanWithCoRoutine.statistics.utils
+package com.example.cleanWithCoRoutine.common.utils
 
 import androidx.lifecycle.Observer
 

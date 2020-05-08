@@ -1,2 +1,3 @@
+include ':common'
 rootProject.name = 'Clean with Co-Routine'
 include ':app', ':repository', ':auth', ':domain', ':local', ':statistics'

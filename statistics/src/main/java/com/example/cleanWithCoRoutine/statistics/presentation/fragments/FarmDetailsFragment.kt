@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import com.example.cleanWithCoRoutine.common.utils.EventObserver
 import com.example.cleanWithCoRoutine.statistics.R
 import com.example.cleanWithCoRoutine.statistics.databinding.FragmentFarmDetailsBinding
 import com.example.cleanWithCoRoutine.statistics.presentation.StatisticActivityViewModel
-import com.example.cleanWithCoRoutine.statistics.utils.EventObserver
 import com.example.cleanWithCoRoutine.statistics.utils.showToast
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap

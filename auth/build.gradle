@@ -67,7 +67,7 @@ dependencies {
             DependencyInjectionDependencies.dagger,
             DependencyInjectionDependencies.daggerAndroid,
 
-            project(':statistics'),
+            project(':common'),
             project(':domain')
     )
 

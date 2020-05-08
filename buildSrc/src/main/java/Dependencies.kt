@@ -105,3 +105,7 @@ object UtilityDependencies {
     const val glideProcessor = "com.github.bumptech.glide:compiler:${Versions.glide}"
     const val googleMaps = "com.google.android.gms:play-services-maps:${Versions.googleMaps}"
 }
+
+object NavigationHome {
+    const val statisticsHomeStart = "com.example.cleanWithCoRoutine.statistics.start"
+}

@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.cleanWithCoRoutine.common.utils.EventObserver
 import com.example.cleanWithCoRoutine.statistics.adapters.StepperAdapter
 import com.example.cleanWithCoRoutine.statistics.databinding.FragmentDetailsContainerBinding
 import com.example.cleanWithCoRoutine.statistics.presentation.StatisticActivityViewModel
-import com.example.cleanWithCoRoutine.statistics.utils.EventObserver
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 

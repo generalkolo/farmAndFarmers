@@ -5,10 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.cleanWithCoRoutine.common.utils.Event
 import com.example.cleanWithCoRoutine.domain.models.statistics.FarmAndFarmersDetails
 import com.example.cleanWithCoRoutine.domain.usecases.statistics.GetAllDetailsUsecase
 import com.example.cleanWithCoRoutine.domain.usecases.statistics.InsertDetailsUsecase
-import com.example.cleanWithCoRoutine.statistics.utils.Event
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -17,14 +17,6 @@ class StatisticActivityViewModel @Inject constructor(
     private val getAllDetailsUsecase: GetAllDetailsUsecase,
     private val insertDetailsUsecase: InsertDetailsUsecase
 ) : ViewModel() {
-
-    init {
-        viewModelScope.launch {
-            getAllDetailsUsecase.invoke().collect { farmDetails ->
-                _allDetails.postValue(farmDetails)
-            }
-        }
-    }
 
     var firstName = ""
     var lastName = ""
@@ -42,11 +34,13 @@ class StatisticActivityViewModel @Inject constructor(
 
     fun initClickedFarmDetails(details: FarmAndFarmersDetails) {
         this.clickedFarmDetails = details
-        Log.d("TASSSS", this.clickedFarmDetails.toString())
     }
 
     private val _toastMessage = MutableLiveData<Event<String>>()
     val toastMessage = _toastMessage as LiveData<Event<String>>
+
+    private val _showEmptyDetailsContainer = MutableLiveData<Boolean>()
+    val showEmptyDetailsContainer = _showEmptyDetailsContainer as LiveData<Boolean>
 
     private val _allDetails = MutableLiveData<List<FarmAndFarmersDetails>>()
     val allDetails = _allDetails as LiveData<List<FarmAndFarmersDetails>>
@@ -59,6 +53,16 @@ class StatisticActivityViewModel @Inject constructor(
 
     private val _moveToFarmDetailsForm = MutableLiveData<Event<Boolean>>()
     val moveToFarmDetailsForm = _moveToFarmDetailsForm as LiveData<Event<Boolean>>
+
+    init {
+        _showEmptyDetailsContainer.postValue(true)
+        viewModelScope.launch {
+            getAllDetailsUsecase.invoke().collect { farmDetails ->
+                _allDetails.postValue(farmDetails)
+                if (farmDetails.isNotEmpty()) _showEmptyDetailsContainer.postValue(false)
+            }
+        }
+    }
 
     fun initDateOfBirth(dateOfBirth: String) {
         this.dateOfBirth = dateOfBirth

@@ -35,6 +35,13 @@
     <!--place holders-->
     <string name="first_last_name">%s %s</string>
 
+    <!--  button texts  -->
+    <string name="next_brn_text">Next</string>
+    <string name="upload_profile_picture_btn_text">Upload Profile Picture</string>
+    <string name="save_btn_text">Save</string>
+    <string name="empty_text">No Farm Details has been Added</string>
+    <string name="display_on_map_btn_text">diplay on map</string>
+
     <!--nigeria states array-->
     <string-array name="nigeria_state">
         <item>Abia</item>

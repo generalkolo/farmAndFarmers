@@ -17,6 +17,8 @@ android {
         versionName Versions.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [stats_home: NavigationHome.statisticsHomeStart]
     }
 
     buildTypes {
@@ -73,7 +75,8 @@ dependencies {
             //Local Libs
             project(':local'),
             project(':auth'),
-            project(':statistics')
+            project(':statistics'),
+            project(':common')
     )
 
     androidTestImplementation(

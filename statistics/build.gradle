@@ -76,7 +76,8 @@ dependencies {
             DependencyInjectionDependencies.dagger,
             DependencyInjectionDependencies.daggerAndroid,
 
-            project(':domain')
+            project(':domain'),
+            project(':common'),
     )
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'

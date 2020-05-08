@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cleanWithCoRoutine.auth.utils.AuthState
-import com.example.cleanWithCoRoutine.auth.utils.Event
+import com.example.cleanWithCoRoutine.common.utils.Event
 import com.example.cleanWithCoRoutine.domain.models.auth.User
 import com.example.cleanWithCoRoutine.domain.usecases.auth.GetDefaultUserLoginUsecase
 import kotlinx.coroutines.flow.collect

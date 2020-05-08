@@ -1,6 +1,7 @@
 package com.example.cleanWithCoRoutine.statistics.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -19,6 +20,7 @@ class StatisticsActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_statistics)
+        Log.d("GGGG", "We are here")
 
         statsActivityViewModel =
             ViewModelProvider(this, viewModelFactory).get(StatisticActivityViewModel::class.java)

@@ -5,7 +5,13 @@
     <application>
         <activity
             android:name=".presentation.StatisticsActivity"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="${stats_home}" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
